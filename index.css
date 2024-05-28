@@ -3,7 +3,7 @@ html, body {
     padding: 0;
     font-family: 'Rubik', sans-serif;
     background-color: #EEF0F4;
-    color: #432000;
+    color: #080808;
     user-select: none;
 }
 
@@ -20,8 +20,8 @@ img {
 }
 
 input {
-    color: #432000;
-    background-color: #DCE1EB;
+    color: #070707;
+    background-color: #d8dce6;
     border: 0;
     padding: 15px;
     border-radius: 8px;
@@ -32,8 +32,8 @@ input {
 }
 
 button {
-    color: #FDFDFD;
-    background-color: #AC485A;
+    color: #080808;
+    background-color: #ebdd67;
     border: 0;
     padding: 15px;
     border-radius: 8px;
@@ -43,7 +43,7 @@ button {
 }
 
 button:hover {
-    background-color: #432000;
+    background-color: #4afa04;
     cursor: pointer;
 }
 
@@ -66,6 +66,6 @@ ul li {
 }
 
 ul li:hover {
-    background-color: #FFECC7;
+    background-color: #4afa04;
     cursor: pointer;
 }
