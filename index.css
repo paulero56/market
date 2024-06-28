@@ -45,8 +45,25 @@ button {
     font-family: 'Rubik', sans-serif;
 }
 
+.undo-button {
+    color: #080808;
+    background-color: #1011115d;
+    border: 0;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+}
+
 button:hover {
     background-color: #4afa04;
+    cursor: pointer;
+}
+
+.undo-button:hover {
+    background-color: #0477fa;
     cursor: pointer;
 }
 
