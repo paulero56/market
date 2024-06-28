@@ -14,7 +14,7 @@ const addButtonEl = document.getElementById("add-button")
 const undoButtonEl = document.getElementById("undo-button")  // Add an undo button in your HTML
 const shoppingListEl = document.getElementById("shopping-list")
 
-let lastDeletedItem = null;  // Variable to store the last deleted item
+let lastDeletedItem = null  // Variable to store the last deleted item
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
