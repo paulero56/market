@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
-import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+import { getDatabase, ref, push, onValue, remove, set } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
 
 const appSettings = {
     databaseURL: "https://project-v2-92d34-default-rtdb.firebaseio.com/"
@@ -11,7 +11,10 @@ const shoppingListInDB = ref(database, "shoppingList")
 
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
+const undoButtonEl = document.getElementById("undo-button")  // Add an undo button in your HTML
 const shoppingListEl = document.getElementById("shopping-list")
+
+let lastDeletedItem = null;  // Variable to store the last deleted item
 
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
@@ -58,8 +61,23 @@ function appendItemToShoppingListEl(item) {
     newEl.addEventListener("click", function() {
         let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
         
+        // Store the last deleted item
+        lastDeletedItem = { id: itemID, value: itemValue }
+        
         remove(exactLocationOfItemInDB)
     })
     
     shoppingListEl.append(newEl)
 }
+
+// Add event listener for the undo button
+undoButtonEl.addEventListener("click", function() {
+    if (lastDeletedItem) {
+        let exactLocationOfItemInDB = ref(database, `shoppingList/${lastDeletedItem.id}`)
+        
+        set(exactLocationOfItemInDB, lastDeletedItem.value)
+        
+        // Clear the lastDeletedItem variable after undoing
+        lastDeletedItem = null
+    }
+})
