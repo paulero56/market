@@ -9,15 +9,27 @@ const appSettings = {
 // Initialize Firebase app
 const app = initializeApp(appSettings)
 const database = getDatabase(app)
-const shoppingListInDB = ref(database, "shoppingList")
+
+// Generate or retrieve a unique identifier for the device
+function getDeviceID() {
+    let deviceID = localStorage.getItem("deviceID")
+    if (!deviceID) {
+        deviceID = uuid.v4()
+        localStorage.setItem("deviceID", deviceID)
+    }
+    return deviceID
+}
+
+const deviceID = getDeviceID()
+const shoppingListInDB = ref(database, `shoppingList/${deviceID}`)
 
 // DOM elements
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
-const undoButtonEl = document.getElementById("undo-button")  // Add an undo button in your HTML
+const undoButtonEl = document.getElementById("undo-button")
 const shoppingListEl = document.getElementById("shopping-list")
 
-let lastDeletedItem = null  // Variable to store the last deleted item
+let lastDeletedItem = null
 
 // Function to generate unique identifier using uuid
 function generateUniqueID() {
@@ -27,18 +39,18 @@ function generateUniqueID() {
 // Add new item to Firebase when the add button is clicked
 addButtonEl.addEventListener("click", function() {
     let inputValue = inputFieldEl.value
-    if (inputValue.trim() !== "") {  // Ensure the input is not empty
+    if (inputValue.trim() !== "") {
         let uniqueID = generateUniqueID()
         let newItem = {
             id: uniqueID,
             value: inputValue
         }
-        push(shoppingListInDB, newItem)
+        set(ref(database, `shoppingList/${deviceID}/${uniqueID}`), newItem)
         clearInputFieldEl()
     }
 })
 
-// Listen for changes in the Firebase database
+// Listen for changes in the Firebase database for this device
 onValue(shoppingListInDB, function(snapshot) {
     if (snapshot.exists()) {
         let itemsArray = Object.entries(snapshot.val())
@@ -68,7 +80,7 @@ function appendItemToShoppingListEl(item) {
     newEl.textContent = itemValue
     
     newEl.addEventListener("click", function() {
-        let exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`)
+        let exactLocationOfItemInDB = ref(database, `shoppingList/${deviceID}/${itemID}`)
         
         // Store the last deleted item
         lastDeletedItem = { id: itemID, value: itemValue }
@@ -82,7 +94,7 @@ function appendItemToShoppingListEl(item) {
 // Add event listener for the undo button
 undoButtonEl.addEventListener("click", function() {
     if (lastDeletedItem) {
-        let exactLocationOfItemInDB = ref(database, `shoppingList/${lastDeletedItem.id}`)
+        let exactLocationOfItemInDB = ref(database, `shoppingList/${deviceID}/${lastDeletedItem.id}`)
         
         set(exactLocationOfItemInDB, { id: lastDeletedItem.id, value: lastDeletedItem.value })
         
