@@ -2,90 +2,133 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Rubik', sans-serif;
-    background-color: #EEF0F4;
-    color: #080808;
+    background-color: #F0F4F8;
+    color: #1A202C;
     user-select: none;
+    min-height: 100vh;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    max-width: 320px;
-    margin: 30px auto;
+    max-width: 380px;
+    margin: 48px auto;
+    padding: 0 16px;
 }
 
 img {
-    width: 150px;
-    margin: 0 auto;
-    border-radius: 8px;
-
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 input {
-    color: #070707;
-    background-color: #d8dce6;
-    border: 0;
-    padding: 15px;
-    border-radius: 8px;
-    font-size: 20px;
+    color: #1A202C;
+    background-color: #FFFFFF;
+    border: 2px solid #E2E8F0;
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 16px;
     text-align: center;
     font-family: 'Rubik', sans-serif;
-    margin: 10px 0;
+    margin: 0 0 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+}
+
+input:focus {
+    border-color: #6366F1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+input::placeholder {
+    color: #A0AEC0;
 }
 
 button {
-    color: #080808;
-    background-color: #ebdd67;
+    color: #FFFFFF;
+    background-color: #6366F1;
     border: 0;
-    padding: 15px;
+    padding: 14px;
     margin-bottom: 10px;
-    border-radius: 8px;
-    font-size: 20px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
     text-align: center;
     font-family: 'Rubik', sans-serif;
-}
-
-.undo-button {
-    color: #080808;
-    background-color: #1011115d;
-    border: 0;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    font-size: 20px;
-    text-align: center;
-    font-family: 'Rubik', sans-serif;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+    cursor: pointer;
 }
 
 button:hover {
-    background-color: #4afa04;
+    background-color: #4F46E5;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.45);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+}
+
+.undo-button {
+    color: #4A5568;
+    background-color: #EDF2F7;
+    border: 0;
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
+    transition: background-color 0.2s, transform 0.1s;
+    box-shadow: none;
     cursor: pointer;
 }
 
 .undo-button:hover {
-    background-color: #0477fa;
-    cursor: pointer;
+    background-color: #E2E8F0;
+    color: #2D3748;
+    box-shadow: none;
+    transform: translateY(-1px);
+}
+
+.undo-button:active {
+    transform: translateY(0);
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+    margin-top: 8px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
 }
 
 ul li {
-    font-size: 20px;
-    background-color: #FFFDF8;
-    padding: 15px;
-    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #FFFFFF;
+    padding: 14px 18px;
+    border-radius: 12px;
     flex-grow: 1;
     text-align: center;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2)
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E2E8F0;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    cursor: pointer;
 }
 
 ul li:hover {
-    background-color: #4afa04;
-    cursor: pointer;
+    background-color: #FFF5F5;
+    border-color: #FEB2B2;
+    color: #C53030;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
