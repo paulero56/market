@@ -12,6 +12,21 @@ const database = getDatabase(app)
 
 const shoppingListInDB = ref(database, "shoppingList")
 
+// Dark mode toggle
+const themeToggleEl = document.getElementById("theme-toggle")
+
+if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark")
+    themeToggleEl.textContent = "☀️"
+}
+
+themeToggleEl.addEventListener("click", function() {
+    document.body.classList.toggle("dark")
+    const isDark = document.body.classList.contains("dark")
+    themeToggleEl.textContent = isDark ? "☀️" : "🌙"
+    localStorage.setItem("theme", isDark ? "dark" : "light")
+})
+
 // DOM elements
 const inputFieldEl = document.getElementById("input-field")
 const addButtonEl = document.getElementById("add-button")
