@@ -26,6 +26,15 @@ html, body {
     display: block;
 }
 
+.app-title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 500;
+    color: #1A202C;
+    margin: 0 0 20px;
+    letter-spacing: 0.5px;
+}
+
 input {
     color: #1A202C;
     background-color: #FFFFFF;
