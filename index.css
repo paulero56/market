@@ -1,7 +1,7 @@
 html, body {
     margin: 0;
     padding: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Outfit', sans-serif;
     background-color: #F0F4F8;
     color: #1A202C;
     user-select: none;
@@ -43,7 +43,7 @@ input {
     border-radius: 12px;
     font-size: 16px;
     text-align: center;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Outfit', sans-serif;
     margin: 0 0 12px;
     transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
@@ -68,7 +68,7 @@ button {
     font-size: 16px;
     font-weight: 500;
     text-align: center;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Outfit', sans-serif;
     transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
     box-shadow: 0 2px 8px rgba(34, 197, 94, 0.35);
     cursor: pointer;
@@ -95,7 +95,7 @@ button:active {
     font-size: 16px;
     font-weight: 500;
     text-align: center;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Outfit', sans-serif;
     transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
     box-shadow: 0 2px 8px rgba(249, 115, 22, 0.35);
     cursor: pointer;
